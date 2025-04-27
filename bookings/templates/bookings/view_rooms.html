@@ -1,0 +1,35 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>客房信息</h2>
+<a href="{% url 'add_room' %}" class="btn btn-primary mb-3">添加客房</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">图片</th>
+            <th scope="col">房间类型</th>
+            <th scope="col">描述</th>
+            <th scope="col">价格</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td><img src="{{ room.image.url }}" alt="{{ room.room_type }}" class="img-thumbnail" style="width: 100px; height: auto;"></td>
+            <td>{{ room.room_type }}</td>
+            <td>{{ room.description }}</td>
+            <td>{{ room.price }}</td>
+            <td>
+                <a href="{% url 'edit_room' room.pk %}" class="btn btn-secondary btn-sm">编辑</a>
+                <form action="{% url 'delete_room' room.pk %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+    <h2 class="text-center mb-4">个人中心</h2>
+
+    <!-- 账号信息卡片 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <strong>账号信息</strong>
+        </div>
+        <div class="card-body">
+            <p><strong>用户名：</strong> {{ user.username }}</p>
+            <p><strong>电子邮件：</strong> {{ user.email }}</p>
+            <p><strong>全名：</strong> {{ user.get_full_name }}</p>
+            <p><strong>注册日期：</strong> {{ user.date_joined }}</p>
+            <a href="{% url 'password_change' %}" class="btn btn-primary">修改密码</a>
+        </div>
+    </div>
+
+    <!-- 我的订单 -->
+    <h3 class="text-center mb-4">我的订单</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>景区</th>
+                    <th>客房</th>
+                    <th>美食</th>
+                    <th>总金额</th>
+                    <th>支付状态</th>
+                    <th>创建时间</th>
+                    <th>付款截图</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>
+                            {% if booking.scenic_spot %}
+                                {{ booking.scenic_spot.name }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if booking.room %}
+                                {{ booking.room.room_type }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if booking.food %}
+                                {{ booking.food.name }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>{{ booking.total_amount }}</td>
+                        <td>{{ booking.payment_status }}</td>
+                        <td>{{ booking.created_at }}</td>
+                        <td>
+                            {% if booking.payment_screenshot %}
+                                <img src="{{ booking.payment_screenshot.url }}" alt="付款截图" class="img-thumbnail" width="100" height="100">
+                            {% else %}
+                                未上传
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="text-center mb-4">添加客房信息</h2>
+    <form method="post" enctype="multipart/form-data" class="form-container">
+        {% csrf_token %}
+
+        <!-- 表单字段 -->
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <!-- 提交按钮 -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+    </form>
+{% endblock %}

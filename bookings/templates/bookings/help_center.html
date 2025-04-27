@@ -1,0 +1,68 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+    <h2 class="text-center mb-4">帮助中心</h2>
+
+    <!-- 常见问题 -->
+    <div class="accordion" id="faqAccordion">
+        <div class="card mb-3">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        如何进行账户注册？
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                <div class="card-body">
+                    要进行账户注册，只需点击页面右上方的“注册”按钮，填写必要的个人信息即可完成注册。
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        如何修改我的密码？
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                <div class="card-body">
+                    你可以在个人中心页面点击“修改密码”按钮，根据提示修改密码。
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        我如何预订景点门票？
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                <div class="card-body">
+                    只需在“景点信息”页面选择您感兴趣的景点，选择日期和票种，点击“预订”即可完成预订。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 联系我们 -->
+    <div class="my-5">
+        <h3 class="text-center mb-4">联系我们</h3>
+        <p class="text-center">如果您在使用过程中遇到问题，欢迎通过以下方式联系我们：</p>
+        <ul class="list-unstyled text-center">
+            <li><strong>Email:</strong> 1762850413@qq.com</li>
+            <li><strong>电话:</strong> 123-456-7890</li>
+            <li><strong>社交媒体:</strong> <a href="https://twitter.com/tourism" target="_blank">Twitter</a> | <a href="https://facebook.com/tourism" target="_blank">Facebook</a></li>
+        </ul>
+    </div>
+
+{% endblock %}

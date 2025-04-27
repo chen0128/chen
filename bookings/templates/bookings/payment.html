@@ -1,0 +1,25 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>支付信息</h2>
+<p>订单编号：{{ booking.id }}</p>
+<p>支付金额：{{ booking.total_amount }} 元</p>
+<p>请使用微信转到到18579518417进行支付：</p>
+<p>付款完成后，请上传付款截图：</p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="file" name="payment_screenshot" class="form-control-file" required>
+    </div>
+    <button type="submit" class="btn btn-primary">上传付款截图</button>
+</form>
+<!-- 可以添加消息提示 -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>公告信息</h2>
+<a href="{% url 'add_announcement' %}" class="btn btn-primary mb-3">添加公告</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">标题</th>
+            <th scope="col">内容</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for announcement in announcements %}
+        <tr>
+            <td>{{ announcement.title }}</td>
+            <td>{{ announcement.content }}</td>
+            <td>
+                <a href="{% url 'edit_announcement' announcement.pk %}" class="btn btn-secondary btn-sm">编辑</a>
+                <form action="{% url 'delete_announcement' announcement.pk %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

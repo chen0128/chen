@@ -1,0 +1,206 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            background-image: url("{% static 'images/background.png' %}"); /* 设置背景图 */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 背景固定 */
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 头部 */
+        header {
+            background-image: url("{% static 'images/header-bg.png' %}"); /* 设置header背景图 */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+            background-blend-mode: overlay; /* 背景图与背景颜色的混合 */
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        /* 内容区 */
+        section {
+            padding: 40px 20px;
+            max-width: 75vw; /* 设置宽度为屏幕的四分之三 */
+            margin: 30px auto;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-image: url("{% static 'images/background2.png' %}"); /* 设置section背景图 */
+            background-size: cover;
+            background-position: center;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            color: #333;
+            margin-top: 30px;
+            border-bottom: 3px solid #007BFF;
+            padding-bottom: 10px;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        /* 用户评价 */
+        .testimonial {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section {
+                padding: 20px;
+                width: 100vw; /* 在小屏幕上，宽度调整为100% */
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .testimonial p {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        /* 动画效果 */
+        .image-container {
+            width: 100%;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            animation: fadeInOut 12s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <header>
+        <h1>欢迎来到旅游景区管理系统</h1>
+    </header>
+
+    <section>
+        <h2>系统简介</h2>
+        <p>我们的旅游景区管理系统是一个功能强大、操作便捷的在线平台，旨在为用户提供一站式的旅游订票服务。无论您是计划商务出行还是休闲度假，都能在这里轻松找到合适的酒店和旅游套餐。</p>
+
+        <h2>主要功能</h2>
+        <ul>
+            <li>美食预订：提供预订服务。</li>
+            <li>酒店预订：涵盖国内外众多热门城市的酒店资源。</li>
+            <li>旅游套餐：各种主题的旅游，让您轻松开启精彩旅程。</li>
+            <li>景点门票预订：提供国内外热门景点门票预订服务。</li>
+        </ul>
+
+        <h2>特色优势</h2>
+        <ul>
+            <li>优质服务：专业客服团队为您提供及时、高效的支持。</li>
+            <li>安全可靠：保障您的个人信息和交易安全。</li>
+            <li>价格优势：提供具有竞争力的价格，让您享受优惠的旅游服务。</li>
+        </ul>
+
+        <h2>用户评价</h2>
+        <div class="testimonial">
+            <p>"这个旅游订票系统真的太方便了！我可以在一个平台上搞定所有的旅游预订，节省了大量的时间和精力。" - 张三</p>
+        </div>
+        <div class="testimonial">
+            <p>"我经常使用这个系统预订旅游套餐，每次都能找到非常满意的行程。" - 李四</p>
+        </div>
+
+        <h2>立即开启您的旅行</h2>
+        <p>还在等什么呢？快来使用我们的旅游订票系统，开启您的精彩旅程吧！</p>
+        <a href="{% url 'scenic_spots' %}" class="btn">开始预订</a>
+    </section>
+
+    <script>
+        const images = document.querySelectorAll('.image-container img');
+        const randomIndex = Math.floor(Math.random() * images.length);
+        images[randomIndex].style.animationDelay = '0s';
+    </script>
+{% endblock %}

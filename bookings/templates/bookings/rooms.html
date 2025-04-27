@@ -1,0 +1,33 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">客房信息</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">房间类型</th>
+            <th scope="col">房间描述</th>
+            <th scope="col">价格</th>
+            <th scope="col">房间图片</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.room_type }}</td>
+                <td>{{ room.description }}</td>
+                <td>{{ room.price }}</td>
+                <td>
+                    {% if room.image %}
+                        <img src="{{ room.image.url }}" class="img-thumbnail" width="100" height="100">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'buy_room' room.id %}" class="btn btn-primary">购买</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">购买景点</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">{{ scenic_spot.name }}</h5>
+        <p class="card-text"><strong>描述：</strong> {{ scenic_spot.description }}</p>
+        <p class="card-text"><strong>位置：</strong> {{ scenic_spot.location }}</p>
+        <p class="card-text"><strong>价格：</strong> {{ scenic_spot.price }}</p>
+        <p class="card-text"><strong>图片：</strong><br>
+            {% if scenic_spot.image %}
+                <img src="{{ scenic_spot.image.url }}" class="img-thumbnail" width="150" height="150">
+            {% endif %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">确认购买</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

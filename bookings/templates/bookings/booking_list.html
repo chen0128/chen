@@ -1,0 +1,21 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">订票列表</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">姓名</th>
+            <th scope="col">旅游日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.tour_date }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

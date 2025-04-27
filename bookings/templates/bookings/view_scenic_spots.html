@@ -1,0 +1,33 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>景点信息</h2>
+<a href="{% url 'add_scenic_spot' %}" class="btn btn-primary mb-3">添加景点</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">图片</th>
+            <th scope="col">名称</th>
+            <th scope="col">描述</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for spot in scenic_spots %}
+        <tr>
+            <td><img src="{{ spot.image.url }}" alt="{{ spot.name }}" class="img-thumbnail" style="width: 100px; height: auto;"></td>
+            <td>{{ spot.name }}</td>
+            <td>{{ spot.description }}</td>
+            <td>
+                <a href="{% url 'edit_scenic_spot' spot.pk %}" class="btn btn-secondary btn-sm">编辑</a>
+                <form action="{% url 'delete_scenic_spot' spot.pk %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

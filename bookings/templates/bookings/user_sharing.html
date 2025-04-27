@@ -1,0 +1,35 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2>用户分享</h2>
+
+{% if user.is_authenticated %}
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="title" class="form-label">分享标题</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">分享内容</label>
+        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">提交</button>
+</form>
+{% else %}
+<p>请<a href="{% url 'login' %}">登录</a>后再分享内容。</p>
+{% endif %}
+
+<hr>
+
+<h3>所有分享</h3>
+{% for sharing in user_sharings %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ sharing.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ sharing.user.username }} - {{ sharing.created_at }}</h6>
+            <p class="card-text">{{ sharing.content }}</p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

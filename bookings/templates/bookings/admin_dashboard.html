@@ -1,0 +1,12 @@
+{% extends 'bookings/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>管理员控制面板</h2>
+<ul>
+    <li><a href="{% url 'add_scenic_spot' %}">添加景点信息</a></li>
+    <li><a href="{% url 'add_food' %}">添加美食信息</a></li>
+    <li><a href="{% url 'add_room' %}">添加客房信息</a></li>
+    <li><a href="{% url 'add_announcement' %}">添加公告信息</a></li>
+</ul>
+{% endblock %}

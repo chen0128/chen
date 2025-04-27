@@ -1,0 +1,23 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">公告信息</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">公告标题</th>
+            <th scope="col">公告内容</th>
+            <th scope="col">创建时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for announcement in announcements %}
+            <tr>
+                <td>{{ announcement.title }}</td>
+                <td>{{ announcement.content }}</td>
+                <td>{{ announcement.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
