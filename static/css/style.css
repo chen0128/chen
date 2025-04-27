@@ -1,0 +1,273 @@
+body {
+    background-image: url('/static/images/backquanju.png');  /* 设置背景图片 */
+    background-size: cover;  /* 背景图片自适应屏幕 */
+    background-position: center;  /* 背景图片居中显示 */
+    background-attachment: fixed;  /* 背景固定 */
+    height: 100vh;  /* 确保背景图覆盖整个视口 */
+    margin: 0;  /* 移除默认的 body margin */
+}
+
+
+/* 头部样式 */
+header {
+    background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+/* 主要内容区域 */
+section {
+    padding: 40px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: #1a202c;
+    font-size: 1.75rem;
+    margin: 40px 0 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 12px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+/* 列表样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 24px;
+}
+
+li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #3182ce;
+    font-size: 1.2rem;
+}
+
+/* 用户评价样式 */
+.testimonial {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-style: italic;
+    color: #2d3748;
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    background-color: #3182ce;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #2b6cb0;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #68d391;
+}
+
+.btn-secondary:hover {
+    background-color: #4ade80;
+}
+
+.btn-tertiary {
+    background-color: #ed8936;
+}
+
+.btn-tertiary:hover {
+    background-color: #dd6b20;
+}
+
+.cta-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* 图片轮播样式 */
+.image-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+/* 表单容器样式 */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+/* 标题居中 */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* 每个表单字段的包装样式 */
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* 输入框、文本框、选择框美化 */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* 提交按钮样式 */
+.btn-primary {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 响应式设计：调整表单字段和按钮的宽度 */
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+.image-container img.active {
+    opacity: 1;
+}
+
+/* 可访问性样式 */
+a:focus, button:focus {
+    outline: 3px solid #63b3ed;
+    outline-offset: 2px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .image-container {
+        height: 250px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .image-container {
+        height: 200px;
+    }
+}
